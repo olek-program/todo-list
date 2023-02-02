@@ -1,8 +1,10 @@
 <template>
-  <div class="input-componemt">
-    <input v-model="text" placeholder="..." />
-    <button @click="addToList">Add</button>
-    <div class="list">{{ score }}</div>
+  <div>
+    <input type="text" v-model="inputValue" />
+    <button @click="addToList">Add to List</button>
+    <ul>
+      <li v-for="item in list" :key="item">{{ item }}</li>
+    </ul>
   </div>
 </template>
 
@@ -10,18 +12,14 @@
 export default {
   data() {
     return {
+      inputValue: "",
       list: [],
-      text: "",
     };
-  },
-  computed: {
-    score() {
-      return `Added to: %{this.lista}`;
-    },
   },
   methods: {
     addToList() {
-      this.list.push(this.text);
+      this.list.push(this.inputValue);
+      this.inputValue = "";
     },
   },
 };
