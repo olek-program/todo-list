@@ -18,6 +18,9 @@ export default {
   },
   methods: {
     addToList() {
+      if (this.inputValue <= 1) {
+        return;
+      }
       this.list.push(this.inputValue);
       this.inputValue = "";
     },
