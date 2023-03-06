@@ -23,7 +23,12 @@ export default {
       }
       this.list.push(this.inputValue);
       this.inputValue = "";
+      localStorage.setItem("myList", JSON.stringify(this.list));
     },
+  },
+  created() {
+    const listJson = localStorage.getItem("myList");
+    this.list = listJson ? JSON.parse(listJson) : [];
   },
 };
 </script>
